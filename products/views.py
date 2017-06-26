@@ -35,6 +35,11 @@ class NewProduct(CreateView):
     form_class = ProductForm
     template_name = 'products/new_form.html'
     success_url = reverse_lazy('products:hello')
+    
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
  
 # Create your views here.
 """
