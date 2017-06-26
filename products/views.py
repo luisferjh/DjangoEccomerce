@@ -12,7 +12,11 @@ from django.core.urlresolvers import reverse_lazy
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import (
+      CreateView,
+      UpdateView,
+      DeleteView
+    )
 
 from .forms import ProductForm
 from .models import Product
@@ -21,19 +25,17 @@ from .mixins import LoginRequiredMixin
 class ProductList(ListView):
     model = Product
 
+
 class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
 
 
 class NewProduct(CreateView):
-    model = CreateView
+    model = Product
     form_class = ProductForm
     template_name = 'products/new_form.html'
     success_url = reverse_lazy('products:hello')
-    
-
-
-        
+ 
 # Create your views here.
 """
 def hello_world(request):
