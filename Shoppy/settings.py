@@ -124,9 +124,9 @@ USE_TZ = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
 STATIC_URL = '/static/'
 
+#Media files(All file are upload in the path)
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 
